@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Job offer</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="app">
+    <div class="form-block">
+        <div class="form-content">
+            <div class="header">
+                <h2>Job offer</h2>
+                <p>If u want to join our team please send your CV.</p>
+            </div>
+            <form id="form" method="post" enctype="multipart/form-data">
+                <div class="name-block">
+                    <label for="name_id">Your Name</label>
+                    <input id="name_id" name="name" type="text" placeholder="example: John Doe" required>
+                </div>
+                <div class="file-upload">
+                    <label for="file_id">Your CV</label>
+                    <input id="file_id" type="file" name="file" accept="*" required>
+                </div>
+                <div class="email-block">
+                    <label for="email_id">Your Email</label>
+                    <input id="email_id" type="email" name="email" placeholder="example:  office@example.com" required>
+                </div>
+                <div class="message-block">
+                    <label for="message_id">Your Email</label>
+                    <textarea required id="message_id" name="message" placeholder="example: I'd like to say 'Hello World!'"></textarea>
+                </div>
+                <button>Submit your CV</button>
+                <p class="statusMsg"></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('document').ready(function () {
+
+        $("#form").on('submit', function(e){
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: 'action.php',
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData:false,
+                success: function(msg){
+                    $('.statusMsg').html('');
+                    if(msg == 'ok'){
+                        $('#form')[0].reset();
+                        $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Form data submitted successfully.</span>');
+                    }else{
+                        $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
+                    }
+                }
+            });
+
+        });
+
+        //file type validation
+        $("#file_id").on('change', function() {
+            var file = this.files[0];
+            var imagefile = file.type;
+            var match= ["application/msword","application/pdf"];
+            if(!((imagefile==match[0]) || (imagefile==match[1]))){
+                alert('Please select a valid cv file (Word/PDF).');
+                $("#file").val('');
+                return false;
+            }
+        });
+
+    });
+</script>
+
+</body>
+</html>

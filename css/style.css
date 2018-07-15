@@ -1,0 +1,89 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background: antiquewhite;
+    font-family: 'Roboto', sans-serif;
+}
+body, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    color: #767676;
+}
+.app {
+    margin-top: 20px;
+}
+form{
+    width: 305px;
+    margin: 0 auto;
+}
+.form-block{
+    background: #fff;
+    border-radius: 5px;
+    max-width: 480px;
+    margin: 0 auto;
+}
+.form-content{
+    padding: 0 45px;
+}
+.header h2{
+    text-align: center;
+    padding: 35px 0 15px 0;
+    font-weight: 100;
+}
+.header p {
+    margin: 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ececec;
+    font-size: 11px;
+}
+.name-block label {
+    padding: 23px 0 10px 0;
+}
+.name-block label, .file-upload label, .email-block label, .message-block label {
+    width: 100%;
+    display: block;
+    padding: 21px 0 10px 0;
+}
+.name-block input, .file-upload input, .email-block input{
+    width: 100%;
+    height: 35px;
+    display: block;
+    border-radius: 2px;
+    border: 1px solid #c4c4c4;
+    padding-left: 52px;
+    background-repeat: no-repeat;
+    background-position: 10px 6px;
+}
+.name-block input {
+    background-image: url(../images/user.png);
+}
+.file-upload input {
+    background-image: url(../images/file.png);
+    cursor: pointer;
+    padding-top: 8px;
+}
+.email-block input {
+    background-image: url(../images/letter.png);
+}
+.message-block textarea{
+    padding: 15px 0 0 52px;
+    background-image: url(../images/message.png);
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+    resize: none;
+    border-radius: 2px;
+    border-color: #c4c4c4;
+    width: 100%;
+    height: 105px;
+}
+form button {
+    width: 305px;
+    height: 45px;
+    background: #0d71d7;
+    color: #fff;
+    font-size: 16px;
+    margin: 20px 0 40px 0;
+    border-radius: 4px;
+}
