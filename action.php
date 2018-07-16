@@ -25,5 +25,5 @@ if($userFileType === "application/msword" || $userFileType === "application/pdf"
 
     echo 'ok';
 } else {
-    echo 'error';;
+    echo 'error';
 }
